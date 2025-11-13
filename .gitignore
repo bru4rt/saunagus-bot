@@ -2,5 +2,11 @@
 __pycache__/
 *.pyc
 trace*.zip
+trace_extract/
 final_*.png
 .last_booking
+.env
+*.log
+saunagus.out.log
+saunagus.err.log
+run.log

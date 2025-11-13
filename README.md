@@ -20,7 +20,7 @@ Playwright-based automation that wakes shortly after midnight, opens EasyTableâ€
    ```
 
 2. **Configure `.env`**
-   - Copy `.env.example` if you create one, or edit `.env` directly.
+   - Copy `.env.example` â†’ `.env` and fill in your real details (keep `.env` out of git).
    - Set `BOOK_URL`, `FIRST_NAME`, `EMAIL`, `MOBILE`, etc.
    - Leave `DRY_RUN=true` while testing; switch to `false` when you want real bookings.
    - Optionally uncomment and fill the IMAP block to let the bot confirm receipt of booking emails.

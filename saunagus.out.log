@@ -1,8 +1,0 @@
-[2025-11-12 23:48:57] Opening https://book.easytable.com/book/?id=e65a3&lang=auto
-[2025-11-12 23:48:59] Guests set to 1
-[2025-11-12 23:49:08] ❌ Error: No calendar button for 2025-11-19
-[2025-11-13 00:00:05] Opening https://book.easytable.com/book/?id=e65a3&lang=auto
-[2025-11-13 00:00:09] ❌ Error: Locator.click: Timeout 3000ms exceeded.
-Call log:
-  - waiting for get_by_role("button", name="1")
-
