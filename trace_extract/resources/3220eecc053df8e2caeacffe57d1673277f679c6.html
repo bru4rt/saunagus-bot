@@ -1,0 +1,312 @@
+
+<script type="text/javascript">
+    function setPreorderStorage(preorderSettings) {
+        preorderSettings = preorderSettings;
+        try {
+            sessionStorage.setItem("preorderSettings", JSON.stringify(preorderSettings));
+        } catch (error) {
+            //console.error(error);
+        }
+    }
+
+    function getPreorderStorage() {
+        var returnObj = {};
+        if (preorderSettings.SetupID == undefined || preorderSettings.SetupID == null) {
+            try {
+                returnObj = JSON.parse(sessionStorage.getItem("preorderSettings"));
+            } catch (error) {
+                //console.error(error);
+            }
+        } else {
+            returnObj = preorderSettings;
+        }
+
+        if (returnObj == null) {
+            returnObj = {};
+        }
+
+        return returnObj;
+    }
+</script>
+
+        <!DOCTYPE html>
+        <html class="">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+            <meta name="robots" content="noindex" />
+            <title>Islands Brygge - Gusbooking til medlemmer</title>
+            <link href="/styles/fonts/OpenSans.css" rel="stylesheet" type="text/css">
+            <link href="/styles/utils.css?v=98" rel="stylesheet" />
+            <link href="styles-light.css?v=98" rel="stylesheet" />
+            <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon.png?v=rMBOXqY5ko">
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png?v=rMBOXqY5ko">
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png?v=rMBOXqY5ko">
+            <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg?v=rMBOXqY5ko" color="#5bbad5">
+            <link rel="shortcut icon" href="/favicons/favicon.ico?v=rMBOXqY5ko">
+            <link href="/styles/fontawesome/css/all.min.css" rel="stylesheet" />
+            <meta name="msapplication-TileColor" content="#ffffff">
+            <meta name="theme-color" content="#ffffff">
+            <meta property="og:image" content="/book/images/084c8-46901.jpg" />
+            <script src="/javascripts/jquery/3.6.0/jquery.min.js"></script>
+            <script src="book.js?v=98"></script>
+            <link href="/javascripts/intlTelInput17.0.11/css/intlTelInput.min.css" rel="stylesheet" />
+            <script src="/javascripts/intlTelInput17.0.11/js/intlTelInput.min.js"></script>
+            <script src="handleCounter.js?v=98"></script>
+            <link href="/styles/components/loadingSpinner.css?v=98" rel="stylesheet" />
+            <script>
+                place = "084c8";
+                lang = "da";
+                lcid = "1030";
+                ref = "";
+                steps = 4;
+                qtySingle = "pers.";
+                qtyMulti = "pers.";
+                qtyGroup = "Gruppeforespørgsel";            
+                strNormal = "Almindelig booking";
+                strBack = "Tilbage";
+                strWait = "Vent venligst...";
+                strChoose = "Vælg";
+                strWaitingList = "Venteliste på";
+                bookingTxt = "booking";
+                waitinglistTxt = "Venteliste";
+                grouprequestTxt = "Gruppe Forespørgsel";
+                bookingConfirmTxt = "widget_confirm_booking";
+                waitinglistConfirmTxt = "Jeg er indforstået med, at en plads på ventelisten ikke er en garanti for booking, og at jeg først har en booking, når jeg modtager en bookingbekræftelse pr. e-mail.";
+                grouprequestConfirmTxt = "widget_confirm_grouprequest";
+                countryCode = "dk";
+                waitinglistEnabled = 0;
+                alternativeBookingFlow = 0;
+                
+                strReadMore = "Læs mere";
+                strReadLess = "Læs mindre";
+                bookingTypeCount = 0;
+                eventCount = 0;
+                hasBookingInfo = false;
+
+                $(function () {
+                    
+                });
+            </script>
+            
+            <style>
+                @media screen and (min-width: 1025px) {
+                    #img {
+                        display: table-cell;
+                        padding: 40px 0 40px 60px;
+                        width: 41%;
+                    }
+                    #img div {
+                        height: 100%;
+                        background: url(/book/images/084c8-46901.jpg) center center;
+                        background-repeat: no-repeat;
+                        -webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+                        background-size: cover;
+                    }
+                }
+            </style>
+            
+        </head>
+        <body class="">
+        
+        <table id="main" border="0">
+        <tr>
+            <td class="header" colspan="2">
+                <h1>Islands Brygge - Gusbooking til medlemmer</h1>
+                
+                <div id="language" title="Change language"><img src="graphics/flags/dk.svg" /></div>
+                <div id="language-menu">
+                    <a class="widget-lang" data-parameters="" data-lang="cs"><img src="graphics/flags/cz.svg" />Czech</a><a class="widget-lang" data-parameters="" data-lang="da"><img src="graphics/flags/dk.svg" />Dansk</a><a class="widget-lang" data-parameters="" data-lang="de"><img src="graphics/flags/de.svg" />Deutsch</a><a class="widget-lang" data-parameters="" data-lang="en"><img src="graphics/flags/gb.svg" />English (GB)</a><a class="widget-lang" data-parameters="" data-lang="us"><img src="graphics/flags/us.svg" />English (US)</a><a class="widget-lang" data-parameters="" data-lang="es"><img src="graphics/flags/es.svg" />Espa&#241;ol</a><a class="widget-lang" data-parameters="" data-lang="fo"><img src="graphics/flags/fo.svg" />F&#248;royskt</a><a class="widget-lang" data-parameters="" data-lang="fr"><img src="graphics/flags/fr.svg" />Fran&#231;ais</a><a class="widget-lang" data-parameters="" data-lang="he"><img src="graphics/flags/il.svg" />Hebrew</a><a class="widget-lang" data-parameters="" data-lang="hr"><img src="graphics/flags/hr.svg" />Hrvatski</a><a class="widget-lang" data-parameters="" data-lang="is"><img src="graphics/flags/is.svg" />&#237;slenska</a><a class="widget-lang" data-parameters="" data-lang="it"><img src="graphics/flags/it.svg" />Italiano</a><a class="widget-lang" data-parameters="" data-lang="lv"><img src="graphics/flags/lv.svg" />Latviski</a><a class="widget-lang" data-parameters="" data-lang="hu"><img src="graphics/flags/hu.svg" />Magyar</a><a class="widget-lang" data-parameters="" data-lang="nl"><img src="graphics/flags/nl.svg" />Nederlands</a><a class="widget-lang" data-parameters="" data-lang="no"><img src="graphics/flags/no.svg" />Norsk</a><a class="widget-lang" data-parameters="" data-lang="ro"><img src="graphics/flags/ro.svg" />Romania</a><a class="widget-lang" data-parameters="" data-lang="al"><img src="graphics/flags/al.svg" />Shqip</a><a class="widget-lang" data-parameters="" data-lang="fi"><img src="graphics/flags/fi.svg" />Suomi</a><a class="widget-lang" data-parameters="" data-lang="se"><img src="graphics/flags/se.svg" />Svenska</a>
+                </div>
+                <div id="close"><i class="fas fa-times"></i></div>
+            </td>
+        </tr>
+        <tr>
+            <td id="img"><div></div></td>
+            <td class="content">
+                <!--<div id="stepsWrapper">
+                    <div id="steps" class="">
+                        <div class="navStepWelcome"><i class="fal fa-info-square"></i><span>Information</span></div><div class="navStepQty"><i class="fal fa-user"></i><span class="def">Gæster</span><span class="val"></span></div><div class="navStepDate"><i class="fal fa-calendar-alt"></i><span class="def">Dato</span><span class="val"></span></div><div class="navStepTime"><i class="fal fa-clock"></i><span class="def">Tid</span><span class="val"></span></div><div class="navStepConfirm"><i class="fal fa-calendar-check"></i><span>Bekræft</span></div>
+                    </div>
+                </div>-->
+                <div id="booking" class="step-qty">
+                    <div class="loader"></div>
+                    
+                    <table class="tbl-booking">
+                    <tr>
+                        <td id="steps" class="">
+                            
+                                <div class="navStepWelcome">
+                                    
+                                        <i class="fal fa-info-square"></i>
+                                        <span>Information</span>
+                                    
+                                </div>
+                                <div class="navStepQty">
+                                    <i class="fal fa-user"></i>
+                                    <span class="def">Gæster</span>
+                                    <span class="val"></span>
+                                </div>
+                                <div class="navStepDate">
+                                    <i class="fal fa-calendar-alt"></i>
+                                    <span class="def">Dato</span>
+                                    <span class="val"></span>
+                                </div>
+                                <div class="navStepTime">
+                                    <i class="fal fa-clock"></i>
+                                    <span class="def">Tid</span>
+                                    <span class="val"></span>
+                                </div>
+                                <div class="navStepPreorder" style="display: none;">
+                                    <i class="fa-light fa-cart-shopping"></i>
+                                    <span>Forudbestilling</span>
+                                </div>
+                                <div class="navStepConfirm">
+                                    <i class="fal fa-calendar-check"></i>
+                                    <span>Bekræft</span>
+                                </div>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cell-booking">
+                            
+                            <div id="stepQty" class="stepContent">
+                                <div id="qty"></div>
+                            </div>
+                            <div id="stepDate" class="stepContent">
+                                <div id="calendar"></div>
+                            </div>
+                            <div id="stepTime" class="stepContent">
+                                <div id="times"></div>
+                            </div>
+                            <div id="stepTypes" class="stepContent">
+                                <div id="booking-types"></div>
+                            </div>
+                            <div id="stepPreorder" class="stepContent">
+                                <div id="preorder"></div>
+                            </div>
+                            <div id="stepConfirm" class="stepContent">
+                                <div class="title confirm-title">Bekræft<span class="confirm-type"></span></div>
+                                <!-- <div class="title confirm-title">widget_confirm_booking</div> -->
+
+                                <div id="confirm" style="margin-top: 40px;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    </table>
+                    
+                </div>
+                <div id="cancel">
+                    <table class="tbl-booking">
+                    <tr>
+                        <td class="back"><a href="?id=084c8&lang=da">Tilbage</a></td>
+                    </tr>
+                    <tr>
+                        <td class="cell-booking">
+                            <div class="title">Annuller en booking</div>
+                            <div id="cancelContent">
+                                
+                                <div class="col"><div class="label">Sted</div><div class="text">Islands Brygge - Gusbooking til medlemmer</div><div class="small"></div><div class="small"><a href="/cdn-cgi/l/email-protection#741f1b1a00151f00341f161c161510111f1801165a101f4b0701161e11170049351a1a01181811061d1a13514644151251464406110711060215001d1b1a"><span class="__cf_email__" data-cfemail="462d292832272d32062d242e242722232d2a332468222d">[email&#160;protected]</span></a></div></div>
+                                <div class="col"><div class="label">Mobil</div><input type="tel" class="mobile" autocomplete="tel" placeholder=" " value="" /><div class="req">Påkrævet</div></div>
+                                <input type="button" class="submit" value="Find booking" />
+                                <div id="cancelResults"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    </table>
+                </div><div id="cancelled">
+                    <table class="tbl-booking">
+                    <tr>
+                        <td class="back"><a href="?id=084c8&lang=da">Tilbage</a></td>
+                    </tr>
+                    <tr>
+                        <td class="cell-booking"><strong>Reservationen er annulleret</strong><br /><br />Vi har annulleret din reservation og håber meget at se dig en anden gang.</td>
+                    </tr>
+                    </table>
+                </div>
+                <div id="alternatives">
+                    <table class="tbl-booking">
+                    <tr>
+                        <td class="back"><span class="link">Tilbage</span></td>
+                    </tr>
+                    <tr>
+                        <td class="cell-booking">
+                            <div id="altContent"></div>
+                        </td>
+                    </tr>
+                    </table>
+                </div>
+                
+            </td>
+        </tr>
+        <tr>
+            <td class="footer" colspan="2">
+                <div id="footer-col1">&copy; 2020 Booking Systems Corporation</div>
+                <div id="footer-col2"><span>I samarbejde med</span><a href="https://easytable.com/" target="_parent" title="Restaurant booking system"><img src="/img/logo_easytable_white.svg" border="0" alt="easyTable booking system" /></a></div>
+            </td>
+        </tr>
+        </table>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+            $(function() {
+                hideLoader();
+                $("#language-menu .widget-lang").off("click").on("click", (event) => {
+                    var clickedElement = $(event.target);
+                    var selectedLang = $(clickedElement).attr("data-lang");
+
+                    event.preventDefault();
+
+                    var query = window.location.href;
+                    var newQuery = "";
+                    if (query.includes("lang=")) {
+                        var langStart = query.indexOf("&lang=");
+                        var langEnd = 0;
+                        var firstAnd = query.indexOf("&", langStart + 1);
+                        var firstHash = query.indexOf("#", langStart + 1);
+
+                        if (firstHash < firstAnd) {
+                            langEnd = firstHash;
+                        } else if (firstAnd == -1 && firstHash > 0) {
+                            langEnd = firstHash;
+                        } else if (firstHash > 0 && firstAnd < firstHash) {
+                            langEnd = firstAnd;
+                        };
+
+                        var langSetting = "";
+                        if (langEnd > 0) {
+                            langSetting = query.substring(langStart, langEnd);
+                        } else {
+                            langSetting = query.substring(langStart, query.length);
+                        }
+                        newQuery = query.replace(langSetting, `&lang=${selectedLang}`);
+
+
+                    } else {
+                        if (query.indexOf("#") != -1) {
+                            newQuery = query.replace("#", `&lang=${selectedLang}#`);
+                        } else {
+                            newQuery = query + `&lang=${selectedLang}`;
+                        }
+                    }
+                    window.location = newQuery;
+                });
+
+                $("#alternatives .back .link").on('click', function(e){
+                    e.preventDefault();
+                    window.history.back();
+                });
+
+                preorderSettings = getPreorderStorage();
+                if (preorderSettings == null) {
+                    preorderSettings = {};
+                }
+            });
+
+        </script>
+
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"fc53270fefca4c99afcbb3369bc29cc5","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+        </html>
+        

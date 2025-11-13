@@ -1,0 +1,200 @@
+
+    <script type="text/javascript">
+        var re2 = /^[1-9][0-9]*$/
+
+        bookingToken = "{21167A70-D9C0-F011-B8E1-000C2936E584}";
+
+        function fcChange(obj) {
+            var cbs = document.getElementsByClassName("fc");
+            for (var i = 0; i < cbs.length; i++) {
+                cbs[i].checked = false;
+            }
+            obj.checked = true;
+        }
+
+        function validateNumericInput(element, input) {
+            //console.log('validateNumericInput');
+            var inputCheck = re2.test(input);
+
+            if (inputCheck) {
+                var max = $(element).attr('max');
+                //console.log('validateNumericInput', max);
+                if (parseInt(input) > parseInt(max)) {
+                    $(element).val(max);
+                }
+            } else {
+                $(element).val("");
+            };
+        }
+
+        function toggleNewsletter(target) {
+            $("#" + target).toggle('fast');
+        }
+
+        function validateOnFocusout(element, value) {
+            if (value == "") {
+                $(element).val("0");
+            }
+            if (parseInt(value) > 0) {
+                $(element).addClass('tag-amount-input-selected');
+            }
+        }
+
+        function validateOnFocusin(element, value) {
+            if (value == 0) {
+                $(element).val("");
+            }
+            $(element).removeClass('tag-amount-input-selected');
+        }
+        
+        $(function() {
+            preorderSettings = getPreorderStorage();
+        });
+    </script>
+    
+    <div class="cols">
+        <div class="col"><div class="label">Sted</div><div class="text">Islands Brygge - Gusbooking til medlemmer</div><div class="small confirm-address"></div></div><div class="col notype"><div class="label">Type</div><div class="text"><span class="type-name">Almindelig booking</span><span class="type-waitinglist"></span></div></div>
+    </div>
+    <div class="cols">
+        <div class="col"><div class="label">Antal gæster</div><div class="text"><a href="#step=qty">1 person</a></div></div><div class="col"><div class="label">Dato og tid</div><div class="text"><a href="#step=date&qty=1&date=19-11-2025">19. november 2025 kl. 19:00 - 20:00</a></div></div>
+        <input type="hidden" id="cancellationtime" name="cancellationtime" value="0" />
+    </div>
+    
+        <div class="form">
+        <div class="cols">
+            <div class="col"><div class="label">Navn</div><input type="text" id="name" /><div class="req">Påkrævet</div></div><div class="col"><div class="label">Mobil</div><input type="tel" id="mobile" placeholder=" " required /><div class="req">Påkrævet</div><div class="invalid">Ugyldigt telefonnummer</div></div></div><div class="col"><div class="label">E-mail</div><input type="email" id="email" required /><div class="req">Påkrævet</div><div class="invalid">Ugyldig e-mail!</div></div>
+        <div class="col col-comment"><div class="label">Kommentar</div><textarea rows="2" id="comment"></textarea></div>
+        
+        <!-- CUSTOM FIELDS -->
+        
+        </div>
+        
+    <div class="checkboxes">
+    
+    </div>
+    
+    <div class="comment" id="refundtext-container" style="display: none;"><i class="fal fa-info-circle" style="color: red;"></i><span id="refundtext"></span></div>
+    
+        <input type="button" data-paymenttext="Gå til betaling" data-confirm="Bekr&aelig;ft" class="submit" value="Bekr&aelig;ft" />
+    
+        <div class="gdpr"><div>Behandling af persondata</div>Du kan læse om, hvordan Islands Brygge - Gusbooking til medlemmer behandler dine personoplysninger i forbindelse med din booking i denne <a href="/book/privacy/?id=084c8&lang=DA" target="_blank">privatlivspolitik</a>.</div>
+        
+    <script type="text/javascript">
+        $(function() {
+            var sPreorderText = "";
+            var sExistingPreorderText = '';
+            var preorderSetupID = 0;
+            var paymentRequired = 0;
+            var preorderRequired = 0;
+            var existingCurrency = "";
+            var existingRefundableAmount = parseFloat("0".replace(",", "."));
+            var refundText = "";
+            var groupRequest = 0;
+            var waitinglist = 0;
+            
+            var formatter = new Intl.NumberFormat("da-DK", {
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+            if ($(".navStepTime span.val").text() == "" && longTime == undefined) {
+                longTime = "19:00";
+
+                $("#steps .navStepTime span.val").html(longTime).css("display", "-webkit-box");
+                $("#steps .navStepTime span.def").hide();
+            }
+
+            if (alternativeBookingFlow == 1) {
+                if ($(".navStepTypes span.val").text() == "") {
+                    $("#steps .navStepTypes span.val").html($($(".type-name a")[0]).text()).css("display", "-webkit-box");
+                    $("#steps .navStepTypes span.def").hide();
+                }
+            }
+            
+            if (preorderSettings.Categories != null && preorderSettings.Categories != undefined) {
+                jQuery.each(preorderSettings.Categories, function (i, cat) {
+                    var catName = cat.Name;
+                    jQuery.each(cat.Products, function (i, prod) {
+                        var prodName = prod.Name;
+                        if (prod.Amount > 0) {
+                            sPreorderText = sPreorderText + `${prod.Amount} x ${prodName}` + `<br>`;
+                        }
+                    });
+                });
+                if (parseFloat(preorderSettings.TotalPrice) > 0) {
+                    const totalPrice = formatter.format(parseFloat(preorderSettings.TotalPrice).toFixed(2));
+                    sPreorderText = sPreorderText + `<br>Total: ${preorderSettings.Currency} ${totalPrice}`
+
+                    var preorderTotal = preorderSettings.TotalPrice.replace(",", ".");
+                    var existingDate = "";
+                    var newDate = "19-11-2025";
+                    var existingPayment = parseFloat(0);
+
+                    var paymentDiff = parseFloat(preorderTotal) - existingPayment;
+                    var allowResidualPayment = 0;
+                    var maxResidualAmount = parseFloat(0);
+
+                    if (Number.isInteger(existingRefundableAmount)) {
+                        existingRefundableAmount = Math.round(existingRefundableAmount).toFixed(2);
+                    }
+                    if (paymentRequired == 1 && preorderTotal > 0 && groupRequest != 1) {
+                        if (existingRefundableAmount > 0) {
+                            if (paymentDiff == 0) {
+                                // 1
+                                $("#confirm .submit").val("Bekræft ændringer");
+                            } else if (paymentDiff < 0) {
+                                // 2
+                                refundText = `Bookingens beløb er ændret. Ved bekræftelse vil der blive refunderet [amount].`.replace("[amount]", `${existingCurrency} ${formatter.format(existingRefundableAmount - parseFloat(preorderTotal))}`);
+                                $("#confirm .submit").val("Bekræft ændringer");
+                            } else if (existingRefundableAmount > 0 && paymentDiff > 0 && paymentDiff <= maxResidualAmount && allowResidualPayment == 1) {
+                                // 3
+                                refundText = `Der er en eksisterende betaling på [current_amount]. Resterende betaling på [residual_amount] vil blive opkrævet på dagen.`.replace("[current_amount]", `${existingCurrency} ${formatter.format(existingRefundableAmount)}`).replace("[residual_amount]", `${existingCurrency} ${formatter.format(paymentDiff)}`);
+                                $("#confirm .submit").val("Bekræft ændringer");
+                            } else if (existingRefundableAmount > 0 && paymentDiff > maxResidualAmount) {
+                                // 4
+                                refundText = `Bookingen kræver en ny betaling på [pay_amount]. Det nuværende beløb på [refund_amount] vil blive refunderet. Hvis du klikker på "Bekræft og foretag en ny betaling", men ikke gennemfører betalingen, vil din reservation blive annulleret.`.replace("[refund_amount]", `${existingCurrency} ${formatter.format(existingRefundableAmount)}`).replace("[pay_amount]", `${existingCurrency} ${formatter.format(preorderTotal)}`);
+                                $("#confirm .submit").val("Bekræft og foretag en ny betaling");
+                            } else {
+                                // 5
+                                refundText = `Denne booking kræver en forudbetaling på [currency] [amount]`.replace("[currency]", existingCurrency).replace("[amount]", formatter.format(preorderTotal))
+                                $("#confirm .submit").val("Gå til betaling");
+                            }
+
+                        } else {
+                            $("#confirm .submit").val("Gå til betaling");
+                        }
+                    } else {
+                        //$("#confirm .submit").val("Bekr&aelig;ft");
+                        $("#confirm .submit").val($("#confirm .submit").attr("data-confirm"));
+                    }
+                } else {
+                    if (existingRefundableAmount > 0) {
+                        refundText = `Bookingens beløb er ændret. Ved bekræftelse vil der blive refunderet [amount].`.replace("[amount]", `${existingCurrency} ${formatter.format(existingRefundableAmount)}`);
+                    }
+                    if ("" != "") {
+                        $("#confirm .submit").val("Bekræft ændringer");
+                    } else {
+                        $("#confirm .submit").val($("#confirm .submit").attr("data-confirm"));
+                    }
+                }
+                if (refundText != "") {
+                    $("#confirm #refundtext-container").show();
+                    $("#confirm #refundtext").text(refundText);
+                }
+                if (sExistingPreorderText != "") {
+                    if ($(sExistingPreorderText)[0].innerHTML.toLowerCase().localeCompare(sPreorderText.toLowerCase()) == 0) {
+                        sExistingPreorderText = "";
+                    };
+                }
+                $("#preorder-summary-text").html('<div style="display: inline-block">' + sExistingPreorderText + '</div><div style="display: inline-block">' + sPreorderText + '</div>');
+            }
+            if (preorderSetupID > 0 && preorderRequired == 1 && preorderSettings.Categories == null && waitinglist == 0) {
+                $("#confirm .submit").val('Der opstod en fejl. Prøv igen.');
+                $("#confirm .submit").off("click");
+                $("#confirm .submit").addClass("disabled");
+                gotoTime();
+            }
+        });
+    </script>
+    

@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+trace*.zip
+final_*.png
+.last_booking

@@ -1,0 +1,30 @@
+.loader {
+  width: 42px;
+  padding: 4px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 4px;
+  border-color: rgb(var(--Primary-color));
+  --_m:
+   conic-gradient(#0000 10%,#000),
+   linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+         mask: var(--_m);
+  -webkit-mask-composite: source-out;
+         mask-composite: subtract;
+  animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg)}
+} 
+
+@media (max-width: 1024px) {
+ 
+   .button-base {     
+      height: 2.75rem;
+      font-size: var(--fs-600);
+   }
+}

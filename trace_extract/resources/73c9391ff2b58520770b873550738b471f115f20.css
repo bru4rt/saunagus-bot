@@ -1,0 +1,1808 @@
+:root {
+    --Primary-color: 3, 165, 117;
+    --Primary-color-darker: 0, 145, 97;
+    --Primary-color-lighter: 22, 190, 140;
+    --Danger: 0, 70%, 50%;
+    --Danger-darker: 0, 70%, 42%;
+    --Danger-lighter: 0, 70%, 58%;
+ 
+    /* Font sizes */
+    --fs-200: 10px;
+    --fs-400: 12px;
+    --fs-600: 14px;
+    --fs-800: 16px;
+    --fs-1000: 20px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0px;
+    height: 100%;
+}
+body {
+    background-color: white;
+    color: #252525;
+    font-family: 'Open Sans',Arial,sans-serif;
+    font-size: 12pt;
+}
+html.embed, html.embed body {
+    height: unset;
+}
+html.embed.iframe, html.embed.iframe body {
+    height: 100%;
+}
+html.embed #main {
+    border: 1px solid #b4b4b4;
+}
+html.iframe #main, html.popup #main {
+    border: none !important;
+}
+html.embed #main {
+    min-height: 670px;
+}
+h1 {
+    font-size: 17pt;
+    font-weight: 600;
+    margin: 0;
+}
+.embed h1 {
+    font-size: 14pt;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+.center-text {
+    text-align: center !important;
+}
+
+a, .link {
+    color: #1670cd;
+    text-decoration: none;
+    cursor: pointer;
+}
+.semibold {
+    font-weight: 600;
+}
+.status {
+    margin-top: 40px;
+    border: 1px solid #d03f3f;
+    font-size: 11pt;
+    font-weight: 600;
+    padding: 8px;
+    color: #d03f3f;
+    border-radius: 5px;
+}
+input[type=button] {
+    font-family: 'Open Sans',Arial,sans-serif;
+    font-size: 12pt;
+    background-color: #212121;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.embed input[type=button] {
+    margin-top: 6px;
+}
+#confirm .notype {
+    display: none;
+}
+#confirm del {
+    display: block;
+    color: #d03f3f;
+    text-decoration: line-through;
+}
+#main {
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    border: 0;
+    border-collapse: collapse;
+}
+#main .header {
+    position: relative;
+    text-align: left;
+    border-bottom: solid 1.5px #eaeaea;
+    height: 65px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.embed #main .header {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 45px;
+    border-bottom: solid 1px #eaeaea;
+}
+#language {
+    position: absolute;
+    top: 22px;
+    right: 15px;
+    cursor: pointer;
+}
+.embed #language {
+    top: 12px;
+    right: 15px;
+}
+.popup #language {
+    top: 12px;
+    right: 45px;
+}
+#language img {
+    width: 22px;
+}
+#language-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    border: solid 1.5px #eaeaea;
+    background-color: white;
+    z-index: 100000;
+    text-align: left;
+}
+#language-menu a {
+    display: block;
+    padding: 5px 10px;
+    font-size: 11pt;
+    color: #252525;
+}
+#language-menu a:hover {
+    background-color: #eeeeee;
+}
+#language-menu img {
+    width: 16px;
+    padding-right: 8px;
+    vertical-align: text-bottom;
+}
+#close {
+    display: none;
+}
+#close i {
+    font-size: 16pt;
+}
+.popup #close {
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    cursor: pointer;
+}
+#main .content {
+    padding: 20px 15px 20px 15px;
+    position: relative;
+    vertical-align: top;
+}
+.embed #main .content {
+    padding: 16px 10px 10px 10px;
+}
+#img {
+    display: none;
+}
+#booking, #cancel, #alternatives, #cancelled, #reconfirm, #mybooking {
+    display: block;
+    height: 100%;
+}
+#cancel, #cancelled, #alternatives, #mybooking {
+    display: none;
+}
+.tbl-booking {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    border-collapse: collapse;
+}
+#steps, .back {
+    height: 37px;
+    vertical-align: top;
+}
+
+#steps > div > span {
+    font-size: 8pt;
+    margin-top: 4px !important;
+    padding-left: 0px !important;
+    vertical-align: top!important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#steps {
+    display: table;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    table-layout: fixed; 
+    text-align: center;
+    box-sizing: border-box;
+}
+ 
+#steps > div {
+    display: table-cell;
+    padding: 0 2px;
+}
+
+#steps div {
+    color: #acacac;
+}
+
+#steps div i {
+    display: block;
+    vertical-align: middle;
+}
+
+#steps span {
+    position: relative;
+    display: inline-block;
+    margin-top: 4px;
+    font-weight: normal;
+    vertical-align: top;
+    word-break: break-word;
+}
+
+#steps span.val {
+    display: none;
+}
+
+.back a, .back .link {
+    font-size: 11pt;
+}
+.back a:hover, .back .link:hover {
+    text-decoration: underline;
+}
+#booking.step-welcome .navStepWelcome span,
+#booking.step-qty .navStepQty span,
+#booking.step-date .navStepDate span,
+#booking.step-time .navStepTime span,
+#booking.step-type .navStepTypes span,
+#booking.step-preorder .navStepPreorder span,
+#booking.step-confirm .navStepConfirm span,
+#stepsWrapper.step-welcome .navStepWelcome span,
+#stepsWrapper.step-qty .navStepQty span,
+#stepsWrapper.step-date .navStepDate span,
+#stepsWrapper.step-time .navStepTime span,
+#stepsWrapper.step-type .navStepTypes span,
+#stepsWrapper.step-preorder .navStepPreorder span,
+#stepsWrapper.step-confirm .navStepConfirm span {
+    font-weight: 600;
+}
+
+#booking.step-welcome .navStepWelcome,
+#stepsWrapper.step-welcome .navStepWelcome {
+    color: #252525;
+}
+
+#booking.step-qty .navStepWelcome, #booking.step-qty .navStepQty,
+#stepsWrapper.step-qty .navStepWelcome, #stepsWrapper.step-qty .navStepQty {
+    color: #252525;
+}
+
+#booking.step-date .navStepWelcome,
+#booking.step-date .navStepQty,
+#booking.step-date .navStepDate,
+#stepsWrapper.step-date .navStepWelcome,
+#stepsWrapper.step-date .navStepQty,
+#stepsWrapper.step-date .navStepDate {
+    color: #252525;
+}
+
+#booking.step-time .navStepWelcome,
+#booking.step-time .navStepQty,
+#booking.step-time .navStepDate,
+#booking.step-time .navStepTime,
+#stepsWrapper.step-time .navStepWelcome,
+#stepsWrapper.step-time .navStepQty,
+#stepsWrapper.step-time .navStepDate,
+#stepsWrapper.step-time .navStepTime {
+    color: #252525;
+}
+
+#booking.step-type .navStepWelcome,
+#booking.step-type .navStepQty,
+#booking.step-type .navStepDate,
+#booking.step-type .navStepTime,
+#booking.step-type .navStepTypes,
+#stepsWrapper.step-type .navStepWelcome,
+#stepsWrapper.step-type .navStepQty,
+#stepsWrapper.step-type .navStepDate,
+#stepsWrapper.step-type .navStepTime,
+#stepsWrapper.step-type .navStepTypes {
+    color: #252525;
+}
+
+#booking.step-preorder .navStepWelcome,
+#booking.step-preorder .navStepQty,
+#booking.step-preorder .navStepDate,
+#booking.step-preorder .navStepTime,
+#booking.step-preorder .navStepTypes,
+#booking.step-preorder .navStepPreorder,
+#stepsWrapper.step-preorder .navStepWelcome,
+#stepsWrapper.step-preorder .navStepQty,
+#stepsWrapper.step-preorder .navStepDate,
+#stepsWrapper.step-preorder .navStepTime,
+#stepsWrapper.step-preorder .navStepTypes,
+#stepsWrapper.step-preorder .navStepPreorder {
+    color: #252525;
+}
+
+#booking.step-confirm .navStepWelcome,
+#booking.step-confirm .navStepQty,
+#booking.step-confirm .navStepDate,
+#booking.step-confirm .navStepTime,
+#booking.step-confirm .navStepTypes,
+#booking.step-confirm .navStepPreorder,
+#booking.step-confirm .navStepConfirm,
+#stepsWrapper.step-confirm .navStepWelcome,
+#stepsWrapper.step-confirm .navStepQty,
+#stepsWrapper.step-confirm .navStepDate,
+#stepsWrapper.step-confirm .navStepTime,
+#stepsWrapper.step-confirm .navStepTypes,
+#stepsWrapper.step-confirm .navStepPreorder,
+#stepsWrapper.step-confirm .navStepConfirm {
+    color: #252525;
+}
+
+#booking.step-qty .navStepWelcome span:hover,
+#stepsWrapper.step-qty .navStepWelcome span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#booking.step-date .navStepWelcome span:hover,
+#booking.step-date .navStepQty span:hover,
+#stepsWrapper.step-date .navStepWelcome span:hover,
+#stepsWrapper.step-date .navStepQty span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#booking.step-time .navStepWelcome span:hover,
+#booking.step-time .navStepQty span:hover,
+#booking.step-time .navStepDate span:hover,
+#stepsWrapper.step-time .navStepWelcome span:hover,
+#stepsWrapper.step-time .navStepQty span:hover,
+#stepsWrapper.step-time .navStepDate span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#booking.step-type .navStepWelcome span:hover,
+#booking.step-type .navStepQty span:hover,
+#booking.step-type .navStepDate span:hover,
+#booking.step-type .navStepTime span:hover,
+#stepsWrapper.step-type .navStepWelcome span:hover,
+#stepsWrapper.step-type .navStepQty span:hover,
+#stepsWrapper.step-type .navStepDate span:hover,
+#stepsWrapper.step-type .navStepTime span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#booking.step-preorder .navStepWelcome span:hover,
+#booking.step-preorder .navStepQty span:hover,
+#booking.step-preorder .navStepDate span:hover,
+#booking.step-preorder .navStepTime span:hover,
+#booking.step-preorder .navStepTypes span:hover,
+#booking.step-preorder .navStepPreorder span:hover,
+#stepsWrapper.step-preorder .navStepWelcome span:hover,
+#stepsWrapper.step-preorder .navStepQty span:hover,
+#stepsWrapper.step-preorder .navStepDate span:hover,
+#stepsWrapper.step-preorder .navStepTime span:hover,
+#stepsWrapper.step-preorder .navStepPreorder span:hover,
+#stepsWrapper.step-preorder .navStepTypes span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#booking.step-confirm .navStepWelcome span:hover,
+#booking.step-confirm .navStepQty span:hover,
+#booking.step-confirm .navStepDate span:hover,
+#booking.step-confirm .navStepTime span:hover,
+#booking.step-confirm .navStepTypes span:hover,
+#booking.step-confirm .navStepPreorder span:hover,
+#stepsWrapper.step-confirm .navStepWelcome span:hover,
+#stepsWrapper.step-confirm .navStepQty span:hover,
+#stepsWrapper.step-confirm .navStepDate span:hover,
+#stepsWrapper.step-confirm .navStepTime span:hover,
+#stepsWrapper.step-confirm .navStepPreorder span:hover,
+#stepsWrapper.step-confirm .navStepTypes span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+#booking.complete span:hover {
+    cursor: default !important;
+    text-decoration: none !important;
+}
+.cell-booking {
+    text-align: center;
+    vertical-align: middle;
+    padding: 25px 0 20px 0;
+}
+.embed .cell-booking {
+    padding: 20px 0 5px 0;
+}
+.cell-booking .stepContent {
+    display: none;
+}
+#stepQty {
+    vertical-align: middle;
+}
+.cell-booking .title {
+    font-size: 18pt;
+}
+#main .footer {
+    background-color: #212121;
+    color: #bebebe;
+    padding: 0 30px;
+    height: 85px;
+    font-size: 9pt;
+    vertical-align: middle;
+}
+.embed #main .footer {
+    height: 50px;
+}
+#footer-col1 {
+    display: block;
+    padding-top: 6px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.embed #footer-col1 {
+    display: none;
+}
+#footer-col2 {
+    display: block;
+    text-align: center;
+}
+#footer-col2 span {
+    display: none;
+}
+#footer-col2 img {
+    width: 170px;
+    height: 29px;
+    padding-top: 3px;
+}
+.embed #footer-col2 img {
+    width: 160px;
+    height: unset;
+}
+.types, #events, #cancelContent, #altContent, #bookButton, #mybookingContent, #confirmContent {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.types, #cancelContent, #altContent, #mybookingContent, #confirmContent, #altTypes {
+    margin-top: 40px;
+}
+#cancelContent, #mybookingContent, #confirmContent {
+    margin-bottom: 40px;
+}
+#events {
+    margin-top: 20px;
+}
+.types .type, .types .group-title, #events .event, #bookButton .type, #alternatives .type, #alternatives .group-title, #alternatives .group-type-title {
+    position: relative;
+    border: 1px solid #d6d6d6;
+    padding: 16px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.types .group .type, #alternatives .group .type, #alternatives .group .group-type .type, #alternatives .group.open .group-type .type {
+    display: none;
+    margin-left: 30px;
+}
+.types .group.open, #alternatives .group.open {
+    margin-bottom: 30px;
+}
+.types .group.open .group-title, #alternatives .group.open .group-title {
+
+}
+.types .group.open .type, #alternatives .group.open .type, #alternatives .group.open .group-type.open .type {
+    display: block;
+}
+.types .group .group-title i {
+    position: absolute;
+    right: 16px;
+    top: 22px;
+}
+
+#altContent .group-title i, #altContent .group-type-title i {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.types .group .group-title i.up, #alternatives .group .group-title i.up, #alternatives .group-type .group-type-title i.up {
+    display: none;
+}
+.types .group.open .group-title i.up, #alternatives .group.open .group-title i.up, #alternatives .group-type.open .group-type-title i.up {
+    display: inline;
+}
+.types .group.open .group-title i.down, #alternatives .group.open .group-title i.down, #alternatives .group-type.open .group-type-title i.down {
+    display: none;
+}
+
+.types .group-title, .types .group-title label, #alternatives .group-title, #alternatives .group-title label, #alternatives .group-type-title, #alternatives .group-type-title label {
+    cursor: pointer;
+}
+.types .group-title:hover, #alternatives .group-title:hover, #alternatives .group-type-title:hover {
+    background-color: #eeeeee;
+}
+.types div label, #events div label, #alternatives div label {
+    font-size: 13pt;
+    display: block;
+    margin-right: 150px;
+}
+.types div span, #events div span, #alternatives div span {
+    display: block;
+    font-size: 10pt;
+    margin-top: 8px;
+    color: #969696;
+    /* margin-right: 150px; */
+}
+.types div a.btn, #events div a.btn, #upcoming_bookings input, #alternatives .options a, #altTypes div a.btn {
+    margin: 0;
+    display: block;
+    position: absolute;
+    right: 16px;
+    width: 110px;
+    background-color: #212121;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+#altContent .group .group-type {
+    border: none;
+    margin-top: 0;
+    padding: 0;
+}
+/*#bookButton a {
+    display: inline-block;
+    width: 160px;
+    background-color: #212121;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    margin-top: 30px;
+}*/
+.eventsTitle {
+    color: #969696;
+}
+#info {
+    font-size: 10pt;
+    margin-top: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#cancelLink {
+    margin-top: 40px;
+}
+#cancelLink a {
+    font-size: 11pt;
+}
+#stepQty #cancelLink a {
+    font-size: 10pt;
+}
+#cancelLink a:hover {
+    text-decoration: underline;
+}
+#qtyOptions {
+    display: inline-block;
+    margin-top: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*grouprequest */
+#stepQty .contact .groupRequest:hover{
+    cursor: pointer;
+    color:#1670cd;
+    text-decoration:underline;
+}
+
+#stepQty .contact .groupRequest{
+    cursor: pointer;
+    color:#1670cd;
+}
+
+#qtyOptions span {
+    font-size: 17pt;
+    line-height: 68px;
+    color: #1b1b1b;
+    background-color: #fbfbfb;
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 34px;
+    margin: 15px;
+}
+#qtyOptions span:hover {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+#qtyOptions span.selected {
+    border: 2px solid #5b5b5b;
+}
+#qtyOptions span.hidden, #qtyOptions div.hidden, #stepQty .contact.hidden {
+    display: none;
+}
+.line-break {
+    display: none;
+}
+#stepQty .contact {
+    margin-top: 30px;
+    font-size: 10pt;
+    color: #5b5b5b;
+}
+/* Calendar & Time */
+#calendar, #times {
+    width: 100%;
+    min-height: 410px;
+    text-align: left;
+    position: relative;
+}
+#calendar .topbar, #times .topbar {
+    font-size: 16pt;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 30px;
+    text-align: center;
+}
+#calendar .topbar div, #times .topbar div {
+    cursor: pointer;
+}
+#calendar .topbar div i, #times .topbar div i {
+    width: 36px;
+    font-size: 14pt;
+    line-height: 30px;
+}
+#calendar .topbar div.disabled, #times .topbar div.disabled {
+    cursor: default;
+}
+#calendar .topbar div.disabled i, #times .topbar div.disabled i {
+    color: #afafaf;
+}
+#calendar .topbar .previous, #times .topbar .previous {
+    float: left;
+}
+#calendar .topbar .next, #times .topbar .next {
+    float: right;
+}
+#times .topbar {
+    margin-bottom: 24px;
+}
+#times .topbar span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+#calendar .daynames {
+    margin-bottom: 5px;
+}
+#times .comment {
+    line-height: 13pt;
+    font-size: 10pt;
+    box-sizing: border-box;
+    margin: -8px 5px 12px 5px;
+    text-align: center;
+    background-color: #fefce6;
+    padding: 10px 15px;
+    border-radius: 2px;
+}
+#confirm .comment, #reconfirm .comment {
+    font-size: 10pt;
+    line-height: 14pt;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fefce6;
+    padding: 10px 15px;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+#confirm .comment i, #reconfirm .comment i {
+    font-size: 11pt;
+    padding-top: 1px;
+    padding-right: 6px;
+}
+#calendar .weekblock {
+    position: relative;
+}
+#calendar .weekblock .day, #calendar .weekblock .space, #times span.time {
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+}
+#calendar .weekblock .day, #calendar .weekblock .space {
+    width: 13.28%;
+    padding-top: 13.28%;
+    margin: 0.5%;
+}
+#times span.time {
+    width: 14.66%;
+    padding-top: 14.66%;
+    margin: 1%;
+    background-color: #cbe2c7;
+}
+#calendar .weekblock .day span, #times .time span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+#calendar .daynames span {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 13.28%;
+    margin: 0.5%;
+    text-align: center;
+}
+#calendar .day, #times .time {
+    border-radius: 50%;
+    position: relative;
+}
+#calendar .day.ua {
+    color: #949494;
+    background-color: #f8f8f8;
+}
+#calendar .day.closed {
+    color: #1b1b1b;
+    background-color: #e2c7c7;
+    cursor: default;
+}
+#calendar .day.av {
+    color: #1b1b1b;
+    background-color: #cbe2c7;
+    cursor: pointer;
+}
+#calendar .day.av:hover {
+    background-color: #a9cca2;
+}
+#calendar .day.alt {
+    background-color: #fbf5d0;
+}
+#calendar .day.alt:hover {
+    background-color: #f2e9b9;
+}
+#calendar .day.wait {
+    background-color: #ffba6b;
+}
+#calendar .day.wait:hover {
+    background-color: #ffa53d;
+}
+#calendar .day.today {
+    color: black;
+    font-weight: 700;
+    
+}
+#times .time {
+    color: #1b1b1b;
+    background-color: #fbfbfb;
+    cursor: pointer;
+    font-size: 11pt;
+}
+#times .time:hover {
+    background-color: #a9cca2;
+}
+#times .time.alt {
+    background-color: #faf6de;
+}
+#times .time.alt:hover {
+    background-color: #f5edc1;
+}
+#times .time.wait {
+    background-color: #ffba6b;
+}
+#times .time.wait:hover {
+    background-color: #ffa53d;
+}
+#times .time.alt.waitlist {
+    /* background: linear-gradient( -45deg, #ffa53d, #ffa53d 49%, white 49%, white 51%, #faf6de 51% ); */
+    outline: 2px solid #ffa53d;
+    outline-offset: -2px;
+}
+#times .time.ampm {
+}
+#times .time div {
+    display: block;
+    font-size: 8pt;
+}
+#calendar .day.selected, #times .time.selected {
+    border: 2px solid #5b5b5b;
+    padding-top: 12%;
+}
+#calendar .day i, #times .time i  {
+    font-size: 5pt;
+    position: absolute;
+    top: 75%;
+    left: 0;
+    right: 0;
+    opacity: 0.5;
+}
+#calendar .day:hover i, #times .time:hover i {
+    opacity: 1;
+}
+#calendar .daycomment, #times .info {
+    position: absolute;
+    line-height: 1.2;
+    font-size: 10pt;
+    box-sizing: border-box;
+    margin-top: -10px;
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    border: 1px solid #5b5b5b;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 100000;
+    text-align: center;
+}
+#calendar .expl, #times .expl {
+    margin-top: 20px;
+    font-size: 10pt;
+    text-align: center;
+}
+#calendar .expl div, #times .expl div {
+    display: inline-block;
+    margin: 6px 10px 0 0;
+}
+#calendar .expl span, #times .expl span {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 5px;
+    vertical-align: text-top;
+    margin: 5px 6px 0 0;
+}
+#calendar .expl .closed span {
+    background-color: #e2c7c7;
+}
+#calendar .expl .maxnotice span, #calendar .expl .minnotice span {
+    background-color: #dddddd;
+}
+#calendar .expl .alt span, #times .expl .alt span {
+    background-color: #f5edc1;
+}
+#calendar .expl .alt.waitlist span, #times .expl .alt.waitlist span {
+    /* background: linear-gradient( -45deg, #ffa53d, #ffa53d 49%, white 49%, white 51%, #faf6de 51% ); */
+    outline: 2px solid #ffa53d;
+    outline-offset: -2px;
+}
+#calendar .expl .wait span, #times .expl .wait span {
+    background-color: #ffba6b;
+}
+#times .nobooking {
+    margin-top: 40px;
+    text-align: center;
+    color: #949494;
+}
+/* Confirm */
+#confirm {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content .col {
+    padding: 9px 10px;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+#confirm .checkboxes {
+    padding: 7px 10px;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+body.modify #confirm .checkboxes {
+    margin-top: 20px;
+}
+#confirm .checkboxes .checkbox {
+    display: block;
+}
+#confirm .checkboxes .checkbox p {
+    margin-top: 0;
+}
+.content .cols {
+    text-align: left;
+}
+.content .cols .col {
+    display: block;
+}
+.content .col .label {
+    font-size: 10pt;
+    color: #969696;
+    margin-bottom: 4px;
+}
+.content .col div.text {
+    display: block;
+    font-size: 11pt;
+    font-weight: 600;
+}
+.content .col div.small {
+    display: block;
+    font-size: 10pt;
+    margin-top: 3px;
+}
+
+.content .col input[type=number] {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 4px;
+    font-size: 11pt;
+    font-family: 'Open Sans',Arial,sans-serif;
+    border-radius: 5px;
+    border: 1px solid #767676;
+}
+
+
+.content .col input[type=text], .content .col input[type=email], .content .col input[type=tel], .content .col textarea, .content .col select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+    font-size: 11pt;
+    font-family: 'Open Sans',Arial,sans-serif;
+    border-radius: 5px;
+    border: 1px solid #767676;
+}
+.content .col textarea {
+    resize: vertical;
+}
+#confirm a {
+    color: #252525;
+}
+#confirm .form {
+    padding-bottom: 2px;
+}
+.content .form .col {
+    padding: 9px 10px 2px 10px;
+}
+#confirm .info {
+    position: relative;
+    font-size: 10pt;
+    margin: 8px 0 18px 0;
+    padding-left: 27px;
+}
+#confirm .info i {
+    font-size: 15pt;
+    position: absolute;
+    left: 0;
+    top: -1px;
+}
+#confirm .checkboxes a, #confirm .gdpr a {
+    color: #1670cd;
+}
+#confirm a:hover {
+    text-decoration: underline;
+}
+#confirm #newsletterPopup {
+    display: none;
+}
+
+/* #newsLetterTerms:focus + #newsletterPopup {
+    display: block;
+} */
+
+#newsletterPopup {
+    font-size: 9pt;
+    display: block;
+    background-color: #fffdf2;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 12px 0;
+    max-width: 600px;
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+
+#confirm #newsletterPopup p {
+    margin: 0 0 10px 0; 
+}
+#confirm .gdpr {
+    margin-top: 25px;
+    padding: 0 10px;
+    font-size: 9pt;
+    color: #969696;
+    text-align: left;
+}
+.embed #confirm .gdpr {
+    margin-top: 15px;
+    font-size: 8pt;
+}
+#confirm .gdpr div {
+    font-weight: 600;
+}
+.cell-booking .req, .cell-booking .invalid {
+    font-size: 9pt;
+    color: white;
+    background-color: #bf8383;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+    display: none;
+}
+.cell-booking .checkbox .req {
+    margin-top: 0;
+    margin-left: 6px;
+}
+
+#cancelResults, #alternatives .options {
+    margin-top: 30px;
+}
+#upcoming_bookings div, #alternatives .options div {
+    position: relative;
+    border: 1px solid #d6d6d6;
+    padding: 16px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    text-align: left;
+}
+
+#alternatives .title, #confirm .title {
+    margin-bottom: 20px;
+}
+
+#mybooking input[type=button] {
+    min-width: 180px;
+}
+
+/* intl-tel-input */
+div.iti {
+    width: 100%;
+}
+div.iti input[type=tel] {
+    padding-left: 50px !important;
+}
+div.iti ul li {
+    font-size: 11pt;
+}
+
+/* Checkbox START */
+label.checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 27px;
+    padding-top: 4px;
+    margin: 2px 16px 10px 0;
+    cursor: pointer;
+    font-size: 10pt;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+label.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 1px solid #5b5b5b;
+  border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+label.checkbox:hover input ~ .checkmark {
+  background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+label.checkbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+label.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+label.checkbox .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* Checkbox END */
+
+.embed #stepWelcome {
+    padding: 0 10px;
+}
+.hidden {
+    display: none !important;
+}
+
+.no-image {
+    min-height: 55px !important;
+}
+
+.no-info {
+    min-height: 0px !important;
+}
+
+#stepPreorder .preorder-description {
+    margin-top: 14px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: pre-wrap;
+}
+
+.preorder-header {
+    width: 100%;
+    min-height: 20px;
+    padding-bottom: 4px;
+}
+
+.preorder-header > div {
+    color: #252525;
+    font-family: Open Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#stepPreorder .bookingtype-box .row .widget-img-product {
+    width:30%;
+    float: left;
+}
+
+#stepPreorder .bookingtype-box .row .widget-img-product img {
+    width:100%;
+    max-height:200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.preorder-widget-has-img {
+    width: 70%;
+    padding: 0px;
+    float: right;
+}
+
+.preorder-widget-noImage {
+    width: 100%
+}
+
+#stepWelcome #events .widget-container:hover, #stepWelcome .types .widget-container:hover, #stepWelcome #bookButton .widget-container:hover, #altTypes .widget-container:hover, #altContent .widget-container:hover, #stepPreorder .widget-container:hover,
+#booking-types #events .widget-container:hover, #booking-types .types .widget-container:hover, #booking-types #bookButton .widget-container:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+#stepWelcome .event-box .row, #stepWelcome .bookingtype-box .row, #stepWelcome #bookButton .bookingtype-box .row, #alternatives .bookingtype-box .row, #alternatives #bookButton .bookingtype-box .row, #stepPreorder .bookingtype-box .row,
+#booking-types .event-box .row, #booking-types .bookingtype-box .row, #booking-types #bookButton .bookingtype-box .row {
+    border: 0;
+    display: table;
+    margin: 0;
+    width: 100%;
+    min-height: 113px;
+}
+
+#altTypes .row {
+    min-height: 20px;
+}
+
+#stepWelcome .event-box .row .widget-img, #stepWelcome .bookingtype-box .row .widget-img, #alternatives .bookingtype-box .row .widget-img, #stepPreorder .bookingtype-box .row .widget-img,
+#booking-types .event-box .row .widget-img, #booking-types .bookingtype-box .row .widget-img {
+    border: 0;
+    display: table-cell;
+    width: 20%;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#stepWelcome .event-box .row .widget-img img, #stepWelcome .bookingtype-box .row .widget-img img, #alternatives .bookingtype-box .row .widget-img img, #stepPreorder .bookingtype-box .row .widget-img img,
+#booking-types .event-box .row .widget-img img, #booking-types .bookingtype-box .row .widget-img img {
+    height: 113px;
+    max-height: 113px;
+    max-width: 233px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    /*bottom: 0;*/
+    left: 0;
+    right: 0;
+    margin: auto;
+    object-position: 50% 50%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#stepWelcome .event-box .row .widget-description, #stepWelcome .bookingtype-box .row .widget-description, #stepWelcome #bookButton .bookingtype-box .row .widget-description, #alternatives .bookingtype-box .row .widget-description, #alternatives #bookButton .bookingtype-box .row .widget-description, #stepPreorder .bookingtype-box .row .widget-description,
+#booking-types .event-box .row .widget-description, #booking-types .bookingtype-box .row .widget-description, #booking-types #bookButton .bookingtype-box .row .widget-description {
+    border: 0;
+    display: table-cell;
+    width: 80%;
+    padding: 0 0 0 16px;
+    text-align: left;
+}
+
+#stepWelcome .event-box .no-info .widget-description, #stepWelcome .bookingtype-box .no-info .widget-description, #stepWelcome .bookingtype-box .no-image .widget-description, #alternatives .bookingtype-box .no-info .widget-description, #stepPreorder .bookingtype-box .no-info .widget-description, #stepPreorder .bookingtype-box .no-image .widget-description,
+#booking-types .event-box .no-info .widget-description, #booking-types .bookingtype-box .no-info .widget-description, #booking-types .bookingtype-box .no-image .widget-description {
+    border: 0;
+    display: table-cell;
+    width: 80%;
+    padding: 0;
+    text-align: left;
+}
+
+#stepWelcome .event-box .row .widget-description .description-span, #stepWelcome .bookingtype-box .row .widget-description .description-span, #alternatives .bookingtype-box .row .widget-description .description-span, #stepPreorder .bookingtype-box .row .widget-description .description-span,
+#booking-types .event-box .row .widget-description .description-span, #booking-types .bookingtype-box .row .widget-description .description-span {
+    margin-right: 0;
+}
+
+#stepWelcome .event-box .row .widget-description .span-right, #stepWelcome .bookingtype-box .row .widget-description .span-right, #alternatives .bookingtype-box .row .widget-description .span-right,
+#booking-types .event-box .row .widget-description .span-right, #booking-types .bookingtype-box .row .widget-description .span-right {
+    margin-right: 0;
+    width: 50%;
+    display: inline-block;
+    text-align: right;
+}
+
+#stepWelcome .event-box .row .widget-description .span-left, #stepWelcome .bookingtype-box .row .widget-description .span-left, #alternatives .bookingtype-box .row .widget-description .span-left,
+#booking-types .event-box .row .widget-description .span-left, #booking-types .bookingtype-box .row .widget-description .span-left {
+    margin-right: 0;
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+#stepWelcome .truncate-3, #altContent .truncate-3, #stepPreorder .truncate-3, #booking-types .truncate-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+#stepWelcome .event-box .row .widget-label, #stepWelcome .bookingtype-box .row .widget-label, #stepWelcome #bookButton .bookingtype-box .row .widget-label, #alternatives .bookingtype-box .row .widget-label, #alternatives #bookButton .bookingtype-box .row .widget-label,
+#booking-types .event-box .row .widget-label, #booking-types .bookingtype-box .row .widget-label, #booking-types #bookButton .bookingtype-box .row .widget-label {
+    font-size: 13pt;
+    display: block;
+    margin-right: 0 !important;
+    color: #252525;
+}
+
+#stepWelcome .event-box, #stepWelcome .bookingtype-box, #stepWelcome .event-box label, #stepWelcome .bookingtype-box label, #alternatives .bookingtype-box, #alternatives .bookingtype-box label, #stepPreorder .widget-readmore,
+#booking-types .event-box, #booking-types .bookingtype-box, #booking-types .event-box label, #booking-types .bookingtype-box label {
+    cursor: pointer;
+}
+
+#booking-types .bookingtype-box.waitlist .widget-label {
+    display: inline-block;
+}
+
+.bookingtype-box .waitinglist-label {
+    display: none !important;
+}
+ 
+.bookingtype-box.waitlist .waitinglist-label {
+    display: block !important;
+    float: right;
+    margin: 0;
+    font-size: 12px;
+    color: #000;
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #FFA64C;
+    background-color: #FFF2E5;
+}
+
+.waitinglist-label i {
+    color: #ffba6b;
+    margin-left: 4px;
+}
+
+#stepWelcome .name-row {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    color: #252525;
+    margin: 0;
+}
+
+#stepPreorder .preorder-row {
+    /* border: 1px solid red; */
+    margin: 10px 0 0 0;
+    font-size: 10pt;
+    float: right;
+    /* height: 30px; */
+    
+}
+
+#stepPreorder .preorder-row .price, #stepPreorder .preorder-row .amount-picker, #stepPreorder .row .total {
+    text-align: right;
+    float: right;
+    margin-left: 15px;
+    /* width: 125px; */
+    vertical-align: middle;
+}
+
+#stepPreorder .price {
+    margin-top: 5px;
+}
+
+#stepPreorder .price-label {
+    display: inline-block;
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+    font-weight: 400;
+    margin-right: 5px;
+    text-align: right;
+}
+
+.tag-amount-container {
+    display: inline-block;
+    margin: 2px 16px 10px 0;
+}
+
+.tag-amount-input {
+    max-width: 25px;
+    min-width: 20px;
+    background-color: white;
+    border: 1px solid #5b5b5b;
+    border-radius: 3px;
+    height: 20px;
+    font-size: 13px;
+    padding: 0;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.btn {
+    padding: 6px 8px;
+}
+
+.tag-amount-input-selected {
+    background-color: #2196f3;
+    color: white;
+    font-weight: 600;
+}
+
+.tag-amount-input:focus {
+    max-width: 45px;
+    width: 45px !important;
+    height: 25px;
+    -moz-appearance: number-input !important;
+}
+
+.tag-amount-input::-webkit-inner-spin-button, .tag-amount-input::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    appearance: none;
+    margin: 0; 
+}
+
+.tag-amount-input:focus::-webkit-inner-spin-button, .tag-amount-input:focus::-webkit-outer-spin-button { 
+    -webkit-appearance: auto; 
+    appearance: auto;
+}
+
+/* Scroll bar */
+#booking::-webkit-scrollbar {
+    width: 7px;
+    margin-left: 5px;
+}
+#booking::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+#booking::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+#booking::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Quantity input selector start */
+
+.handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {
+  float: left;
+  text-align: center;
+}
+
+.handle-counter .counter-minus,  .handle-counter .counter-plus { text-align: center; }
+
+.handle-counter .counter-minus {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.handle-counter .counter-plus {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.handle-counter input {
+  width: 50px;
+  border-width: 1px;
+  border-left: none;
+  border-right: none;
+  height: 29px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:disabled, .btn:disabled:hover, #confirm .submit.disabled {
+  background-color: darkgrey;
+  cursor: not-allowed;
+}
+
+.btn-primary { background-color: #212121; }
+
+.btn-primary:hover, .btn-primary:focus { background-color: #4d4d4d; }
+
+.blur {
+    filter: blur(3px);
+}
+
+.loader {
+    box-sizing: border-box;
+    position: absolute !important;
+    left: calc(50% - 27px);
+    top: calc(50% - 27px);
+    z-index: 99;
+    display: none;
+}
+
+/* Quantity input selector end */
+
+@media screen and (max-width: 641px) {
+    .types .group .type, #alternatives .group .type, #alternatives .group .group-type .type, #alternatives .group.open .group-type .type {
+        margin-left: 0px;
+    }
+
+    #stepWelcome .event-box .row .widget-img, #stepWelcome .bookingtype-box .row .widget-img, #alternatives .bookingtype-box .row .widget-img, #stepPreorder .bookingtype-box .row .widget-img {
+        width: 30%;
+    }
+
+     #stepWelcome .event-box .row, #stepWelcome .bookingtype-box .row, #stepPreorder .bookingtype-box .row {
+        /*display: block; udkomenteret af jla*/
+        padding: 0;
+    }
+
+    #stepPreorder .bookingtype-box .row .widget-img img {
+        display: block;
+        max-height: 100%;
+        max-width: 100%;
+    } 
+
+     #stepPreorder .bookingtype-box .row .widget-description {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #stepWelcome .event-box .no-info .widget-label, #stepWelcome .bookingtype-box .no-info .widget-label,
+    #stepWelcome .event-box .no-image .widget-label, #stepWelcome .bookingtype-box .no-image .widget-label, #stepWelcome #bookButton .bookingtype-box .widget-label,
+    #stepPreorder .bookingtype-box .no-info .widget-label, #stepPreorder .bookingtype-box .no-image .widget-label {
+        margin-top: 0;
+    }
+
+    #stepPreorder .bookingtype-box .row {
+        display: block;
+        width: 100%;
+        margin: 5px 0 0 0;
+        min-height: 100px;
+    }
+
+    #stepPreorder .bookingtype-box .row .widget-img-product, .preorder-widget-has-img {
+        width: 100%;
+        float: left;
+    }
+    #stepPreorder .handle-counter .counter-minus, #stepPreorder .handle-counter .counter-plus {
+        padding: 6px 8px;
+    }
+
+    .bookingtype-box.waitlist .waitinglist-label {
+        float: none;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 414px) {
+    td#steps {
+        width: calc(100% + 30px);
+        margin-left: -15px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+
+    #main .header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    #language {
+        right: 20px;
+    }
+    #main .content {
+        padding: 20px 20px;
+    }
+}
+
+@media screen and (min-width: 550px) {
+    .line-break {
+        display: block;
+    }
+    #calendar, #times {
+        width: 490px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #calendar .weekblock .day, #calendar .weekblock .space, #times span.time {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+        padding-top: 19px;
+        text-decoration: none;
+        text-align: center;
+        vertical-align: middle;
+    }
+    #calendar .daynames span {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 60px;
+        margin: 5px;
+        text-align: center;
+    }
+    #calendar .day i, #times .time i  {
+        top: 42px;
+    }
+    #main .footer {
+        padding: 0 40px;
+        height: 55px;
+    }
+    .embed #main .footer {
+        padding: 0 20px;
+        height: 50px;
+        font-size: 9pt;
+    }
+    #footer-col1 {
+        display: block !important;
+        float: left;
+        padding-top: 10px;
+    }
+    #footer-col2 {
+        float: right;
+        padding-top: 4px;
+        text-align: right;
+    }
+    #footer-col2 img {
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 6px;
+        padding-left: 10px;
+    }
+    .embed #footer-col2 img {
+        padding-top: 1px;
+        padding-bottom: 0;
+        width: 150px;
+        height: unset;
+    }
+    .content .cols .col {
+        display: inline-block;
+        width: 50%;
+    }
+    #confirm .notype {
+        display: inline-block;
+    }
+}
+@media screen and (min-width: 650px) {
+    #calendar, #times {
+        min-height: 550px;
+        margin-top: 30px;
+    }
+    #confirm .gdpr {
+        padding: 10px;
+    }
+}
+@media screen and (min-width:1025px) {
+
+    #main .header {
+        text-align: center;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    #language {
+        top: 23px;
+        right: 40px;
+    }
+    #language img {
+        width: 20px;
+    }
+    #main .content {
+        padding: 40px 60px;
+        height: 100%;
+    }
+    #booking, #cancel, #cancelled, #alternatives, #mybooking {
+        vertical-align: top;
+        box-sizing: border-box;
+        height: 100%;
+        position: relative;
+    }
+    #booking.step-welcome, #booking.step-confirm, #alternatives, #booking.step-preorder {
+        overflow-y: auto;
+        padding: 0 10px 0 10px;
+    }
+    .embed #stepWelcome, .embed #stepConfirm {
+        padding: 0;
+    }
+    body.noimage #booking, body.noimage #cancel, body.noimage #cancelled, body.noimage #alternatives, body.noimage #mybooking {
+        height: 100%;
+        width: 100%;
+        padding-left: 0;
+    }
+    #footer-col2 span {
+        display: inline-block;
+        text-align: right;
+    }
+    #steps div i {
+        font-size: 13pt;
+        display: inline-block;
+    }
+    #steps span {
+        padding-left: 4px;
+        display: inline-block;
+        margin-top: 0;
+        vertical-align: middle;
+    }
+    
+    .cell-booking {
+        padding: 20px 0 20px 0;
+    }
+    .types, #events, #cancelContent, #altContent, #bookButton, #preorderCategories {
+        width: 100%;
+        min-width: 490px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    }
+     #cancelContent {
+        width: 490px;
+     }
+    #confirm {
+        width: 60%;
+        min-width: 490px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    #steps {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.f-l {
+    float: left;
+}
+.f-e {
+    float: right;
+}
+
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+.fw-100 {
+    min-width: 100px;
+}
+
+.preorder-custom-tag-container {
+    position: absolute;
+    right:0px;
+    top: 0px;
+}
+
+.preorder-custom-tag {
+    padding: 5px 10px;
+    background: #212121;
+    color:white;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.preorder-setting-buttom {
+    bottom: 0px;
+}
+.widget-top {
+    min-height: 75px;
+}
+
+
+.preorder-widget-description {
+    position: relative;
+    padding: 5px 10px;
+    min-height: 90px;
+}
+
+.price {
+    float: right;
+}
+
+.widget-result {
+    bottom: 0px;
+    width: 100%;
+}
+
+.m-2 {
+    margin: 0.5 rem;
+}
+
+input:focus-visible {
+    outline: -webkit-focus-ring-color none;
+}
+
+/*chrome and other*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */ 
+input[type=number] {
+  -moz-appearance: textfield;
+}
