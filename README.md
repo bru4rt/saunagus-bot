@@ -24,13 +24,14 @@ Playwright-based automation that wakes shortly after midnight, opens EasyTableâ€
    - Set `BOOK_URL`, `FIRST_NAME`, `EMAIL`, `MOBILE`, etc.
    - Leave `DRY_RUN=true` while testing; switch to `false` when you want real bookings.
    - Optionally uncomment and fill the IMAP block to let the bot confirm receipt of booking emails.
+   - Set `WAIT_FOR_MIDNIGHT=false` when demoing during the dayâ€”the bot will skip the midnight sleep and start immediately.
 
 3. **Run the bot**
    ```bash
    source .venv/bin/activate
    python saunagus_book.py
    ```
-   Start it any time before midnight. It will sleep until `00:00 + MIDNIGHT_OFFSET_SEC`, then retry every `RETRY_INTERVAL_MIN` minutes until a booking succeeds. Use `run_saunagus.sh` if you prefer a single command (also handy for cron/launchd).
+   Start it any time before midnight. It will sleep until `00:00 + MIDNIGHT_OFFSET_SEC`, then retry every `RETRY_INTERVAL_MIN` minutes until a booking succeeds. Use `run_saunagus.sh` if you prefer a single command (also handy for cron/launchd). For live demos, set `WAIT_FOR_MIDNIGHT=false` so it runs immediately.
 
 ## Tips
 
@@ -40,7 +41,7 @@ Playwright-based automation that wakes shortly after midnight, opens EasyTableâ€
 
 ## Troubleshooting
 
-- **New UI changes**: inspect `trace.zip` after a failed run and update the selectors in `saunagus_book.py`.
+- **New UI changes**: inspect `trace.zip` after a failed run and update the selectors in `saunagus_book.py`. For other EasyTable setups (e.g., the Islands Brygge page vs. the members-only one), just swap the `BOOK_URL` value in `.env`.
 - **IMAP unavailable**: keep the IMAP block commented; the bot will still exit with status 0 after submitting the booking.
 - **GitHub repo**: standard git workflow (`git status`, `git add`, `git commit`, `git push`) keeps the automation versioned.
 
