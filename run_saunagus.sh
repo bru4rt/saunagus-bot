@@ -1,7 +1,11 @@
-
+#!/usr/bin/env bash
 set -euo pipefail
-echo "$(date) run_saunagus.sh started" >> /Users/axelbrugger/saunagus-bot/run.log
 
-cd /Users/axelbrugger/saunagus-bot
+# Resolve the project directory dynamically so the script works on both macOS and Linux hosts.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LOG_FILE="$SCRIPT_DIR/run.log"
 
-exec /Users/axelbrugger/saunagus-bot/.venv/bin/python /Users/axelbrugger/saunagus-bot/saunagus_book.py
+echo "$(date) run_saunagus.sh started" >> "$LOG_FILE"
+cd "$SCRIPT_DIR"
+
+exec "$SCRIPT_DIR/.venv/bin/python" "$SCRIPT_DIR/saunagus_book.py"
