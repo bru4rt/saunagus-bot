@@ -24,7 +24,7 @@ IMAP_FROM  = os.getenv("IMAP_FROM_CONTAINS","")
 IMAP_SUBJ  = os.getenv("IMAP_SUBJECT_CONTAINS","confirmation")
 CONFIRMATION_TIMEOUT_MIN = int(os.getenv("CONFIRMATION_TIMEOUT_MIN","10"))
 
-HEADLESS   = os.getenv("HEADLESS","true").lower() == "true"
+HEADLESS   = os.getenv("HEADLESS","false").lower() == "true"
 MIDNIGHT_OFFSET_SEC = int(os.getenv("MIDNIGHT_OFFSET_SEC","15"))
 WAIT_FOR_MIDNIGHT   = os.getenv("WAIT_FOR_MIDNIGHT","true").lower() == "true"
 DRY_RUN    = os.getenv("DRY_RUN","false").lower() == "false"
