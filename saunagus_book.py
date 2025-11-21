@@ -27,7 +27,7 @@ CONFIRMATION_TIMEOUT_MIN = int(os.getenv("CONFIRMATION_TIMEOUT_MIN","10"))
 HEADLESS   = os.getenv("HEADLESS","false").lower() == "true"
 MIDNIGHT_OFFSET_SEC = int(os.getenv("MIDNIGHT_OFFSET_SEC","15"))
 WAIT_FOR_MIDNIGHT   = os.getenv("WAIT_FOR_MIDNIGHT","true").lower() == "true"
-DRY_RUN    = os.getenv("DRY_RUN","false").lower() == "false"
+DRY_RUN = os.getenv("DRY_RUN","false").strip().lower() in ("1","true","yes","y","on")
 LAST_BOOK_FILE = os.getenv("LAST_BOOK_FILE", ".last_booking")
 RETRY_INTERVAL_MIN = int(os.getenv("RETRY_INTERVAL_MIN", "30"))
 
