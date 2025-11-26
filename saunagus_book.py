@@ -31,6 +31,9 @@ DRY_RUN = os.getenv("DRY_RUN","false").strip().lower() in ("1","true","yes","y",
 LAST_BOOK_FILE = os.getenv("LAST_BOOK_FILE", ".last_booking")
 RETRY_INTERVAL_MIN = int(os.getenv("RETRY_INTERVAL_MIN", "30"))
 
+MIN_SLOT_MINUTES = 7*60 + 1   # 07:01
+MAX_SLOT_MINUTES = 21*60 + 59 # 21:59
+
 TARGET_DATE = (dt.date.today() + dt.timedelta(days=LEAD_DAYS))
 
 def log(msg): print(dt.datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), msg, flush=True)
@@ -284,7 +287,12 @@ async def select_time(page):
     if not candidates:
         raise RuntimeError("No enabled time buttons discovered.")
 
-    btn, label, _ = pick_slot(candidates, POLICY)
+    # Filter out slots outside the allowed window
+    filtered = [c for c in candidates if MIN_SLOT_MINUTES <= c[2] <= MAX_SLOT_MINUTES]
+    if not filtered:
+        raise RuntimeError(f"No time slots within 07:01-21:59 window (found {len(candidates)} total).")
+
+    btn, label, _ = pick_slot(filtered, POLICY)
     await btn.click()
     log(f"Selected slot: {label}")
 
