@@ -589,10 +589,6 @@ async def wait_until_midnight_offset():
             log("Already past midnight offset; starting immediately.")
 
 async def main():
-    if not DRY_RUN and already_booked_today():
-        log(f"Booking already recorded in '{LAST_BOOK_FILE}' for today; exiting.")
-        sys.exit(0)
-
     if WAIT_FOR_MIDNIGHT:
         await wait_until_midnight_offset()
     else:
@@ -620,10 +616,6 @@ async def main():
                 log("No booking was submitted; retrying.")
         except Exception as e:
             log(f"❌ Error: {e}")
-
-        if not DRY_RUN and already_booked_today():
-            log(f"Detected booking marker file '{LAST_BOOK_FILE}' set externally; exiting.")
-            sys.exit(0)
 
         log(f"Waiting {RETRY_INTERVAL_MIN} minutes before next attempt...")
         await asyncio.sleep(RETRY_INTERVAL_MIN * 60)
