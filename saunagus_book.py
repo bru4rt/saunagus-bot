@@ -563,9 +563,17 @@ async def select_guest_count(page):
     qty_container = page.locator("#stepQty")
     try:
         await qty_container.wait_for(timeout=6000)
-        candidate = qty_container.locator(f"xpath=.//*[normalize-space()='{guest_label}'][1]")
-        await candidate.click(timeout=3000)
-        log(f"Selected guest count {guest_label} via #stepQty fallback.")
+        # Prefer explicit quantity options to avoid strict-mode collisions
+        candidate = qty_container.locator("span.optQty", has_text=re.compile(rf"^{guest_label}$"))
+        if await candidate.count() >= 1:
+            await candidate.nth(0).click(timeout=3000)
+            log(f"Selected guest count {guest_label} via optQty span.")
+            await page.wait_for_timeout(800)
+            return
+        # Fallback to first matching text if structure changes again
+        candidate = qty_container.locator(f"xpath=.//*[normalize-space()='{guest_label}']")
+        await candidate.first.click(timeout=3000)
+        log(f"Selected guest count {guest_label} via #stepQty text fallback.")
         await page.wait_for_timeout(800)
         return
     except PwTimeout:
