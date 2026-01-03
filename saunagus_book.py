@@ -101,13 +101,22 @@ async def select_target_date(page):
     year = int(year_str)
 
     # Map Danish month names to numbers, fallback to English if needed
+    # Danish + Dutch month names; fallback to English if needed
     months_da = {
         "januar": 1, "februar": 2, "marts": 3, "april": 4,
         "maj": 5, "juni": 6, "juli": 7, "august": 8,
         "september": 9, "oktober": 10, "november": 11, "december": 12
     }
+    months_nl = {
+        "januari": 1, "februari": 2, "maart": 3, "april": 4,
+        "mei": 5, "juni": 6, "juli": 7, "augustus": 8,
+        "september": 9, "oktober": 10, "november": 11, "december": 12
+    }
+
     if month_name in months_da:
         month = months_da[month_name]
+    elif month_name in months_nl:
+        month = months_nl[month_name]
     else:
         # fallback for English header like "November 2025"
         month = dt.datetime.strptime(month_name.capitalize(), "%B").month
